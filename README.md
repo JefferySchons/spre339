@@ -1,9 +1,9 @@
 **CPRE 339 Final Project Proposal**
 
 Group members:
-Jeffery Schons
-Jacob Long
-Chidike Ubani
+*Jeffery Schons
+*Jacob Long
+*Chidike Ubani
 
 Idea is an ATM system. This would involve coding the server that handles all the
 machines as well as coding a sample ATM Client. The server would handle the clients
