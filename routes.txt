@@ -42,7 +42,7 @@ Returns:
 GET /user/:user_id/auth?password=<string> - authenticates the user
 Returns:
 {
-	"correct": boolean
+	"status": int (200 means it's good)
 }
 
 PUT /user/:account_id - update a user
