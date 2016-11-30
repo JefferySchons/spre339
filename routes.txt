@@ -1,0 +1,52 @@
+GET /account - list accounts
+Returns:
+{
+	"accounts": array of strings
+}
+
+GET /account/:account_id - get information about an account
+Returns:
+{
+	"owner": string,
+	"balance": double,
+	"type": string
+}
+
+PUT /account/:account_id - update an account
+Send:
+{
+	"balance": double
+}
+
+POST /account - create a new account
+Send:
+{
+	"owner": string,
+	"initialBalance": double,
+	"type": string
+}
+
+GET /user - list users
+Returns:
+{
+	"users": array of strings
+}
+
+GET /user/:user_id - get information about a user
+Returns:
+{
+	"name": string,
+	"accounts": array of strings
+}
+
+PUT /user/:account_id - update a user
+Send:
+{
+	"accounts": array of strings
+}
+
+POST /user - create a new user
+Send:
+{
+	"name": string
+}
