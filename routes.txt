@@ -36,7 +36,13 @@ GET /user/:user_id - get information about a user
 Returns:
 {
 	"name": string,
-	"accounts": array of strings
+	"accounts": array of strings,
+}
+
+GET /user/:user_id/auth?password=<string> - authenticates the user
+Returns:
+{
+	"correct": boolean
 }
 
 PUT /user/:account_id - update a user
@@ -48,5 +54,6 @@ Send:
 POST /user - create a new user
 Send:
 {
-	"name": string
+	"name": string,
+	"password": string
 }
