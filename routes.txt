@@ -9,7 +9,8 @@ Returns:
 {
 	"owner": string,
 	"balance": double,
-	"type": string
+	"type": string,
+	"id": string
 }
 
 PUT /account/:account_id - update an account
@@ -24,6 +25,11 @@ Send:
 	"owner": string,
 	"balance": double,
 	"type": string
+}
+
+Returns:
+{
+	"id": string
 }
 
 GET /user - list users
