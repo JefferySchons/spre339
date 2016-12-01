@@ -22,7 +22,7 @@ POST /account - create a new account
 Send:
 {
 	"owner": string,
-	"initialBalance": double,
+	"balance": double,
 	"type": string
 }
 
