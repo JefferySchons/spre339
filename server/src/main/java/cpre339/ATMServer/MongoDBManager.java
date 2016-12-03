@@ -3,7 +3,9 @@ package cpre339.ATMServer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.BsonDocument;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
@@ -11,6 +13,7 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.*;
 
 import cpre339.ATMServer.json.Account;
 import cpre339.ATMServer.json.DocumentObject;
@@ -37,6 +40,13 @@ public class MongoDBManager
 		collection.insertOne(data.toDocument());
 	}
 	
+	public <T extends DocumentObject> void updateObject(String collectionName, String field, Object value, T updatedObject)
+	{
+		MongoCollection<Document> collection = database.getCollection(collectionName);
+		Bson updateOperation = new BsonDocument("$set", updatedObject.toBsonDocument());
+		collection.updateOne(eq(field, value), updateOperation);
+	}
+	
 	public <T extends DocumentObject> List<T> getCollection(String collectionName, final Class type)
 	{
 		final ArrayList<T> documents = new ArrayList<T>();
@@ -55,6 +65,14 @@ public class MongoDBManager
 				});
 		
 		return documents;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T extends DocumentObject> T performQuery(String collectionName, String fieldToCheck, Object value, Class type)
+	{
+		MongoCollection<Document> collection = database.getCollection(collectionName);
+		Document doc = collection.find(eq(fieldToCheck, value)).first();
+		return (T) ((type == Account.class) ? Account.fromDocument(doc) : User.fromDocument(doc));
 	}
 	
 	public static MongoDBManager instance()

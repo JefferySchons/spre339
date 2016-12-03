@@ -1,13 +1,14 @@
 package cpre339.ATMServer.json;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.bson.BsonArray;
+import org.bson.BsonDocument;
+import org.bson.BsonString;
 import org.bson.Document;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.mongodb.BasicDBObject;
 
 public class User implements DocumentObject
 {
@@ -67,7 +68,20 @@ public class User implements DocumentObject
 	{
 		return new Document()
 				.append("name", name)
-				.append("accounts", accounts);
+				.append("accounts", accounts)
+				.append("password", password);
+	}
+	
+	public BsonDocument toBsonDocument()
+	{
+		BsonArray array = new BsonArray();
+		for(String acct : accounts)
+		{
+			array.add(new BsonString(acct));
+		}
+		
+		return new BsonDocument()
+				.append("accounts", array);
 	}
 	
 	@SuppressWarnings("unchecked")
