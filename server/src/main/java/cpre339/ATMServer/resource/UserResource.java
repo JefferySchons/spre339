@@ -75,7 +75,6 @@ public class UserResource
 		else
 		{
 			map.put("status", 401);
-			map.put("message", "Incorrect password");
 		}
 		
 		return Response.ok(new Gson().toJson(map)).build();

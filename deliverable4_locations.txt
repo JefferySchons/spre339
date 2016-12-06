@@ -1,0 +1,13 @@
+Defensive programming:
+We check the input to ensure that it is actually a number in a few places, such as when the user creates a new account and when they deposit/withdraw funds
+final_project/src/main/java/Client.java on lines: 315, 396, 431
+
+Inter-process communication:
+Due to the client-server architecture we used, this is spread throughout the application.
+The resources package for the server contains the logic where responses are sent back to the client.
+Each of the functions in the client file contains calls to the Unirest HTTP request library to communicate with the server.
+
+Design patterns:
+Interpreter pattern can be found in the server and client where the JSON is interpreted into objects.
+Chain of responsibility is on the server where data is received from the client at each route, and then passed on to the database.
+The server acts as a mediator between a client and its accounts.
