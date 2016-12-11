@@ -11,3 +11,6 @@ Design patterns:
 Interpreter pattern can be found in the server and client where the JSON is interpreted into objects.
 Chain of responsibility is on the server where data is received from the client at each route, and then passed on to the database.
 The server acts as a mediator between a client and its accounts.
+
+Final video:
+https://youtu.be/8bxGvaH70dQ
